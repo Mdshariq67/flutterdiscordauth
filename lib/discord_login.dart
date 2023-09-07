@@ -30,9 +30,9 @@ class DiscordAuth {
       '/api/oauth2/authorize',
       {
         'response_type': 'code',
-        'client_id': '1148946350289981524',
+        'client_id': 'your_client_id',
         'scope': 'identify email',
-        'redirect_uri': 'com.example.socialshare://auth',
+        'redirect_uri': 'your_redirect_uri',
         'code_challenge': codeChallenge,
         'code_challenge_method': 'S256',
       },
@@ -42,7 +42,7 @@ class DiscordAuth {
     try {
       final result = await FlutterWebAuth.authenticate(
         url: authorizationUrl.toString(),
-        callbackUrlScheme: 'com.example.socialshare',
+        callbackUrlScheme: 'your_scheme',
       );
       final authorizationCode = Uri.parse(result).queryParameters['code'];
       print(authorizationCode);
@@ -64,11 +64,11 @@ class DiscordAuth {
       tokenUri,
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: {
-        'client_id': '1148946350289981524',
-        'client_secret': 'BEN6p11TVN5uuwYRT9fNxbI01lTgsD5F',
+        'client_id': 'your_client_id',
+        'client_secret': 'your_client_secret',
         'grant_type': 'authorization_code',
         'code': authorizationCode,
-        'redirect_uri': 'com.example.socialshare://auth',
+        'redirect_uri': 'your_redirect_uri',
         'scope': 'identify',
         "code_verifier": codeverifier
       },
